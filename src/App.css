@@ -27,7 +27,22 @@
 .App-link {
   color: #97ca3f;
 }
-
+.aver
+  {
+    color:red;
+    font-weight: bolder;
+  }
+.daddy
+  {
+    width: inherit;
+    height: 90px;
+    background-color: rebeccapurple;
+    border: solid 1px black;
+    padding-top: 10px;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+  }
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
