@@ -1,6 +1,6 @@
 function TodoSearch() {
     return (
-      <input placeholder="cortar el pan"></input>
+      <input placeholder="cortar el pan" tabIndex={1}></input>
     );
   }
 
