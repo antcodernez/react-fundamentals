@@ -1,6 +1,8 @@
+import "./todoSearch.css";
+
 function TodoSearch() {
     return (
-      <input placeholder="cortar el pan" tabIndex={1}></input>
+      <input placeholder="Search a task" tabIndex={1}></input>
     );
   }
 

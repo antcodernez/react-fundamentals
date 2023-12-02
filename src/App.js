@@ -1,4 +1,3 @@
-import './App.css';
 import { TodoCounter } from "./todoCounter";
 import { TodoSearch } from "./todoSearch";
 import { TodoList } from "./todoList";
@@ -12,8 +11,8 @@ const defaultTodos = [
     completed: true
   },
   {
-    text: "Ir de putas",
-    completed: false
+    text: "Ir por holes",
+    completed: true
   },
   {
     text: "Debrayar con la pantilla",
@@ -65,4 +64,3 @@ function App() {
   );
 }
 export default App;
-
