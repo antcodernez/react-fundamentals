@@ -23,11 +23,11 @@ const defaultTodos = [
     completed: true
   },
   {
-    text: "Usar estados derivados",
-    completed: true
+    text: "caguas, hommies, jainas",
+    completed: false
   },
   {
-    text: "Un pinche toque también",
+    text: "Y un pinche toque también",
     completed: false
   },
   
@@ -61,7 +61,6 @@ function App() {
   
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
-  console.log("Los usuarios buscan TODOS de: " + searchValue);
 
   const completedTODOs = todos.filter(
     todo => !!todo.completed
@@ -84,6 +83,21 @@ function App() {
 
       return concidenciasTODOs.includes(searchValueLowerCase);
   });
+
+  //Vamos a crear la funcion actualizadora del estado
+  const completeTODO = (text) => {
+    const newTodos = [...todos];
+    const index = newTodos.findIndex((todo) => todo.text === text);
+     
+    newTodos[index].completed  = true;
+    setTodos(newTodos)
+  }
+  const deleteTODO = (text) => {
+    const newTodos = [...todos];
+    const index = newTodos.findIndex((todo) => todo.text === text);
+    newTodos.splice(index, 1);
+    setTodos(newTodos)
+  }
   return (          
     <>
       <TodoCounter 
@@ -97,7 +111,13 @@ function App() {
       />
       <TodoList>
         {searchedTODOs.map( todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text} 
+            completed={todo.completed}
+            onComplete={() => completeTODO(todo.text)}
+            onDelete={() => deleteTODO(todo.text)}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />

@@ -28,16 +28,33 @@
 //   }
 
 //Styles desde una hoja de estilos
-import "./todoCounter.css";
+// import "./todoCounter.css";
 
-function TodoCounter({total, completed}) {
-    return (
-      <h1>
-        Haz completado <span>{completed}</span> de <span>{total}</span> TODO's
-      </h1>
-    );
-  }
+// function TodoCounter({total, completed}) {
+//     let message = `Haz completado <span>${completed}</span> de <span>${total}</span> TODO's`; 
+//     let message1 = `Felicidades lo lograste 👻, terminaste todos los TODO's`; 
+    
+//     return (
+//       <h1>{total === completed ? message1 : message}</h1>
+//     );
+//   }
 
-export {
-    TodoCounter
-};
+// export {
+//     TodoCounter
+// };
+
+import React from 'react';
+import './todoCounter.css';
+
+function TodoCounter({ total, completed }) {
+  let message = (
+    <span>
+      Haz completado <strong>{completed}</strong> de <strong>{total}</strong> TODO's
+    </span>
+  );
+  let message1 = <span>Felicidades, lo lograste 👻, terminaste todos los TODO's</span>;
+
+  return <h1>{total === completed ? message1 : message}</h1>;
+}
+
+export { TodoCounter };
