@@ -8,11 +8,11 @@ import React from 'react';
 const defaultTodos = [
   {
     text: "comprar weed",
-    completed: true
+    completed: false
   },
   {
     text: "Ir por holes",
-    completed: true
+    completed: false
   },
   {
     text: "Debrayar con la pantilla",
@@ -20,6 +20,10 @@ const defaultTodos = [
   },
   {
     text: "Un wey tumbado",
+    completed: true
+  },
+  {
+    text: "Usar estados derivados",
     completed: true
   },
   
@@ -50,12 +54,33 @@ const defaultTodos = [
 // }
 
 function App() {
-  return (
+  
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState('');
+  console.log("Los usuarios buscan TODOS de: " + searchValue);
+
+  const completedTODOs = todos.filter(
+    todo => !!todo.completed
+    // la doble negacion va a convertir a booleano cualquier cosa que me devuelca todo.completed
+
+    // Si todo.completed tiene algo que de positivo(string, array, objeto lo que sea)
+  ).length;
+
+  const totalTODOs = todos.length;
+
+  return (          
     <>
-      <TodoCounter total={4} completed={1} />
-      <TodoSearch />
+      <TodoCounter 
+        total={totalTODOs} 
+        completed={completedTODOs} 
+      />
+
+      <TodoSearch 
+        searchValue={searchValue}
+        setSearchValue={setSearchValue} 
+      />
       <TodoList>
-        {defaultTodos.map((todo) => (
+        {defaultTodos.map( todo => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
         ))}
       </TodoList>

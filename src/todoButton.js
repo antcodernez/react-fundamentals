@@ -1,7 +1,12 @@
 import "./todoButton.css"
 function CreateTodoButton() {
     return (
-        <button>+</button>
+        <button onClick={(event) => {
+            console.log("Le diste click master")
+            console.log(event)
+            console.log(event.target)
+
+        }}>+</button>
     );
 }
 
