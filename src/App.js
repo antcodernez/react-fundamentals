@@ -26,6 +26,10 @@ const defaultTodos = [
     text: "Usar estados derivados",
     completed: true
   },
+  {
+    text: "Un pinche toque también",
+    completed: false
+  },
   
 ];
 // Por cada elemento(objeto) de mi array voy a renderizar un todo item
@@ -68,6 +72,18 @@ function App() {
 
   const totalTODOs = todos.length;
 
+  const searchedTODOs = todos.filter(element => {
+    // función texto sin tildes
+      const noTildes = (text) => {
+        return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      };
+    
+      // Normalizando texto sin tildes y a Lower Case
+      const concidenciasTODOs = noTildes(element.text.toLowerCase());
+      const searchValueLowerCase = noTildes(searchValue.toLowerCase());
+
+      return concidenciasTODOs.includes(searchValueLowerCase);
+  });
   return (          
     <>
       <TodoCounter 
@@ -80,7 +96,7 @@ function App() {
         setSearchValue={setSearchValue} 
       />
       <TodoList>
-        {defaultTodos.map( todo => (
+        {searchedTODOs.map( todo => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
         ))}
       </TodoList>
