@@ -52,7 +52,7 @@ function TodoCounter({ total, completed }) {
       Haz completado <strong>{completed}</strong> de <strong>{total}</strong> TODO's
     </span>
   );
-  let message1 = <span>Felicidades, lo lograste 👻, terminaste todos los TODO's</span>;
+  let message1 = <span>Felicidades lo lograste 👻, terminaste todos los TODO's</span>;
 
   return <h1>{total === completed ? message1 : message}</h1>;
 }
