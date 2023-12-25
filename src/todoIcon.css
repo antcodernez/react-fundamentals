@@ -1,0 +1,37 @@
+.Icon-container
+    {
+        cursor:pointer;
+        justify-self: center;
+        place-self: center;
+        height:48px;
+        width:48px;
+        font-size:34px;
+        font-weight: bold;
+    }
+.Icon-container-check
+    {
+       font-size: 35px; 
+       color:gainsboro
+    }
+.Icon-container-check--active
+    {
+        color:#10f717
+    }
+.Icon-container-delete
+    {
+        justify-self: right;
+        margin-bottom: 40px;
+    }
+.Icon-container-delete:hover .Icon-svg
+    {
+        fill:red
+    }
+.Icon-container-check:hover .Icon-svg
+    {
+        fill:rgb(14, 255, 2)
+    }
+.Icon-svg
+    {
+        width: 24px;
+        height: 24px;
+    }

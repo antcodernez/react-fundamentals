@@ -54,31 +54,3 @@
     {
         text-decoration:line-through
     }
-.Icon
-    {
-        cursor:pointer;
-        justify-self: center;
-        place-self: center;
-        height:48px;
-        width:48px;
-        font-size:34px;
-        font-weight: bold;
-    }
-.Icon-check
-    {
-       font-size: 35px; 
-       color:gainsboro
-    }
-.Icon-check--active
-    {
-        color:#10f717
-    }
-.Icon-delete
-    {
-        justify-self: right;
-        margin-bottom: 40px;
-    }
-.Icon-delete:hover
-    {
-        color:red
-    }
