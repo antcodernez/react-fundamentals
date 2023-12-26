@@ -60,22 +60,38 @@ import React from 'react';
 // localStorage.setItem("TODOS_V1", defaultTodos);
 //localStorage.removeItem("TODOS_V1");
 
-function App() {
-  const localStorageTODOs = localStorage.getItem("TODOS_V1");
-  
-  let parsedTODOs;
+//Cuando creo un hook es buena practica declararlo con un use
 
-  if(!localStorageTODOs)
-    {
-      localStorage.setItem("TODOS_V1", JSON.stringify([]))
-      parsedTODOs = [];
-    }
-  else  
-    {
-      parsedTODOs = JSON.parse(localStorageTODOs)
-    }
+function useLocalStorage(itemName, initialValue) 
+  {
+
+    const localStorageItem = localStorage.getItem(itemName);
   
-  const [todos, setTodos] = React.useState(parsedTODOs);
+    let parsedItem;
+  
+    if(!localStorageItem)
+      {
+        localStorage.setItem(itemName, JSON.stringify(initialValue))
+        parsedItem = initialValue;
+      }
+    else  
+      {
+        parsedItem = JSON.parse(localStorageItem)
+      }
+    
+    const [item, setItem] = React.useState(parsedItem);
+
+    const saveItem = (newItem) => {
+      localStorage.setItem(itemName, JSON.stringify(newItem));
+      setItem(newItem);
+    }
+
+    return [item, saveItem];
+  }
+
+function App() {
+ 
+  const [todos, saveTODOs] =useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTODOs = todos.filter(
@@ -115,11 +131,7 @@ function App() {
     saveTODOs(newTodos)
   }
 
-  // funcion que actualiza al estado y al localstorage
-  const saveTODOs = (newTODOs) => {
-    setTodos(newTODOs);
-    localStorage.setItem("TODOS_V1", JSON.stringify(newTODOs))
-  }
+ 
   return (          
     <>
       <TodoCounter 
