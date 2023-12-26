@@ -5,33 +5,33 @@ import { TodoItem } from './todoItem';
 import { CreateTodoButton  } from './todoButton';
 import React from 'react';
 
-const defaultTodos = [
-  {
-    text: "comprar weed",
-    completed: false
-  },
-  {
-    text: "Ir por holes",
-    completed: false
-  },
-  {
-    text: "Debrayar con la pantilla",
-    completed: false
-  },
-  {
-    text: "Un wey tumbado",
-    completed: true
-  },
-  {
-    text: "caguas, hommies, jainas",
-    completed: false
-  },
-  {
-    text: "Y un pinche toque también",
-    completed: false
-  },
+// const defaultTodos = [
+//   {
+//     text: "comprar weed",
+//     completed: false
+//   },
+//   {
+//     text: "Ir por holes",
+//     completed: false
+//   },
+//   {
+//     text: "Debrayar con la pantilla",
+//     completed: false
+//   },
+//   {
+//     text: "Un wey tumbado",
+//     completed: true
+//   },
+//   {
+//     text: "caguas, hommies, jainas",
+//     completed: false
+//   },
+//   {
+//     text: "Y un pinche toque también",
+//     completed: false
+//   },
   
-];
+// ];
 // Por cada elemento(objeto) de mi array voy a renderizar un todo item
 
 // function App() {
@@ -57,9 +57,25 @@ const defaultTodos = [
 //   );   
 // }
 
+// localStorage.setItem("TODOS_V1", defaultTodos);
+//localStorage.removeItem("TODOS_V1");
+
 function App() {
+  const localStorageTODOs = localStorage.getItem("TODOS_V1");
   
-  const [todos, setTodos] = React.useState(defaultTodos);
+  let parsedTODOs;
+
+  if(!localStorageTODOs)
+    {
+      localStorage.setItem("TODOS_V1", JSON.stringify([]))
+      parsedTODOs = [];
+    }
+  else  
+    {
+      parsedTODOs = JSON.parse(localStorageTODOs)
+    }
+  
+  const [todos, setTodos] = React.useState(parsedTODOs);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTODOs = todos.filter(
@@ -90,13 +106,19 @@ function App() {
     const index = newTodos.findIndex((todo) => todo.text === text);
      
     newTodos[index].completed  = true;
-    setTodos(newTodos)
+    saveTODOs(newTodos)
   }
   const deleteTODO = (text) => {
     const newTodos = [...todos];
     const index = newTodos.findIndex((todo) => todo.text === text);
     newTodos.splice(index, 1);
-    setTodos(newTodos)
+    saveTODOs(newTodos)
+  }
+
+  // funcion que actualiza al estado y al localstorage
+  const saveTODOs = (newTODOs) => {
+    setTodos(newTODOs);
+    localStorage.setItem("TODOS_V1", JSON.stringify(newTODOs))
   }
   return (          
     <>
