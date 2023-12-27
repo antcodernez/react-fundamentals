@@ -1,9 +1,10 @@
-import { TodoCounter } from "./todoCounter";
-import { TodoSearch } from "./todoSearch";
-import { TodoList } from "./todoList";
-import { TodoItem } from './todoItem';
-import { CreateTodoButton  } from './todoButton';
+import { TodoCounter } from "../todoCounter";
+import { TodoSearch } from "../todoSearch";
+import { TodoList } from "../todoList";
+import { TodoItem } from '../todoItem';
+import { CreateTodoButton  } from '../todoButton';
 import React from 'react';
+import { useLocalStorage } from "./useLocalStorage";
 
 // const defaultTodos = [
 //   {
@@ -62,36 +63,11 @@ import React from 'react';
 
 //Cuando creo un hook es buena practica declararlo con un use
 
-function useLocalStorage(itemName, initialValue) 
-  {
 
-    const localStorageItem = localStorage.getItem(itemName);
-  
-    let parsedItem;
-  
-    if(!localStorageItem)
-      {
-        localStorage.setItem(itemName, JSON.stringify(initialValue))
-        parsedItem = initialValue;
-      }
-    else  
-      {
-        parsedItem = JSON.parse(localStorageItem)
-      }
-    
-    const [item, setItem] = React.useState(parsedItem);
-
-    const saveItem = (newItem) => {
-      localStorage.setItem(itemName, JSON.stringify(newItem));
-      setItem(newItem);
-    }
-
-    return [item, saveItem];
-  }
 
 function App() {
  
-  const [todos, saveTODOs] =useLocalStorage("TODOS_V1", []);
+  const [todos, saveTODOs] = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTODOs = todos.filter(

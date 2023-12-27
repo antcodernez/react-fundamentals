@@ -1,5 +1,5 @@
-import { CompleteIcon} from "./completeIcon"
-import { DeleteIcon} from "./deleteIcon"
+import { CompleteIcon} from "../todoIcon/completeIcon"
+import { DeleteIcon} from "../todoIcon/deleteIcon"
 import "./todoItem.css"
 
 // className me indica que es xml
