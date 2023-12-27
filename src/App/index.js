@@ -1,10 +1,6 @@
-import { TodoCounter } from "../todoCounter";
-import { TodoSearch } from "../todoSearch";
-import { TodoList } from "../todoList";
-import { TodoItem } from '../todoItem';
-import { CreateTodoButton  } from '../todoButton';
 import React from 'react';
 import { useLocalStorage } from "./useLocalStorage";
+import {AppUI} from "./appUI"
 
 // const defaultTodos = [
 //   {
@@ -109,29 +105,15 @@ function App() {
 
  
   return (          
-    <>
-      <TodoCounter 
-        total={totalTODOs} 
-        completed={completedTODOs} 
-      />
+    <AppUI 
+    totalTODOs={totalTODOs} 
+    completedTODOs={completedTODOs} 
+    searchValue={searchValue} 
+    setSearchValue={setSearchValue} 
+    searchedTODOs={searchedTODOs} 
+    completeTODO={completeTODO} 
+    deleteTODO={deleteTODO}/>
 
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue} 
-      />
-      <TodoList>
-        {searchedTODOs.map( todo => (
-          <TodoItem 
-            key={todo.text} 
-            text={todo.text} 
-            completed={todo.completed}
-            onComplete={() => completeTODO(todo.text)}
-            onDelete={() => deleteTODO(todo.text)}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-    </>
   );
 }
 export default App;

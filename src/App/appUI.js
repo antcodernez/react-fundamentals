@@ -1,0 +1,30 @@
+import { TodoCounter } from "../todoCounter";
+import { TodoSearch } from "../todoSearch";
+import { TodoList } from "../todoList";
+import { CreateTodoButton } from "../todoButton";
+import { TodoItem } from "../todoItem";
+
+function AppUI ({totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO}) 
+    {
+        return (
+            <>
+            <TodoCounter total={totalTODOs} completed={completedTODOs} />
+
+            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+            <TodoList>
+                {searchedTODOs.map((todo) => (
+                <TodoItem
+                    key={todo.text}
+                    text={todo.text}
+                    completed={todo.completed}
+                    onComplete={() => completeTODO(todo.text)}
+                    onDelete={() => deleteTODO(todo.text)}
+                />
+                ))}
+            </TodoList>
+            <CreateTodoButton />
+            </>
+        );
+    };
+
+export { AppUI };
