@@ -2,35 +2,6 @@ import React from 'react';
 import { useLocalStorage } from "./useLocalStorage";
 import {AppUI} from "./appUI"
 
-// const defaultTodos = [
-//   {
-//     text: "comprar weed",
-//     completed: false
-//   },
-//   {
-//     text: "Ir por holes",
-//     completed: false
-//   },
-//   {
-//     text: "Debrayar con la pantilla",
-//     completed: false
-//   },
-//   {
-//     text: "Un wey tumbado",
-//     completed: true
-//   },
-//   {
-//     text: "caguas, hommies, jainas",
-//     completed: false
-//   },
-//   {
-//     text: "Y un pinche toque también",
-//     completed: false
-//   },
-  
-// ];
-// Por cada elemento(objeto) de mi array voy a renderizar un todo item
-
 // function App() {
 //   return (
 //     <React.Fragment>
@@ -63,7 +34,7 @@ import {AppUI} from "./appUI"
 
 function App() {
  
-  const [todos, saveTODOs] = useLocalStorage("TODOS_V1", []);
+  const {item:todos, saveItem:saveTODOs, laoding, error} = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTODOs = todos.filter(
@@ -106,6 +77,8 @@ function App() {
  
   return (          
     <AppUI 
+    error={error}
+    laoding={laoding}
     totalTODOs={totalTODOs} 
     completedTODOs={completedTODOs} 
     searchValue={searchValue} 
