@@ -54,7 +54,7 @@ function TodoCounter({ total, completed }) {
   );
   let message1 = <span>Felicidades lo lograste 👻, terminaste todos los TODO's</span>;
 
-  return <h1>{total === completed ? message1 : message}</h1>;
+  return <h1>{ total === completed  ? message1 : message }</h1>;
 }
 
 export { TodoCounter };

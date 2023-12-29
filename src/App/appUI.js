@@ -3,7 +3,7 @@ import { TodoSearch } from "../todoSearch";
 import { TodoList } from "../todoList";
 import { CreateTodoButton } from "../todoButton";
 import { TodoItem } from "../todoItem";
-
+import "./app.css"
 function AppUI ({totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO,
 laoding, error}) 
     {
@@ -13,10 +13,11 @@ laoding, error})
 
             <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
             <TodoList>
-                {laoding && <p>Loading...</p>}
-                {error && <p>Hubo un error perror!!!</p>}
+                {laoding && <p className="text-normal">Loading...</p>}
 
-                {(!laoding && searchedTODOs.length == 0) && <p>Make your first to do 🥰💥!!!</p>}
+                {error && <p className="text-normal">Hubo un error perror!!!</p>}
+                
+                {(laoding && searchedTODOs.length === 0) && <p className="text-normal">Make your first to do 🥰💥!!!</p>}
 
                 {searchedTODOs.map((todo) => (
                     <TodoItem
