@@ -30,7 +30,7 @@ function useLocalStorage(itemName, initialValue) {
           setLoading(false);
           setError(true);
         }
-    }, 1800);
+    }, 2000);
   }, [itemName, initialValue]);
   //Este array especifica las variables o valores externos que el efecto debe observar. Cuando alguno de estos valores cambia, el efecto se ejecuta. Si el array está vacío, el efecto se ejecutará solo una vez, después del primer renderizado del componente. 
 
