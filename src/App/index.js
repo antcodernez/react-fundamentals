@@ -34,7 +34,7 @@ import {AppUI} from "./appUI"
 
 function App() {
  
-  const {item:todos, saveItem:saveTODOs, laoding, error} = useLocalStorage("TODOS_V1", []);
+  const {item:todos, saveItem:saveTODOs, loading, error} = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTODOs = todos.filter(
@@ -74,11 +74,10 @@ function App() {
     saveTODOs(newTodos)
   }
 
- 
   return (          
     <AppUI 
     error={error}
-    laoding={laoding}
+    loading={loading}
     totalTODOs={totalTODOs} 
     completedTODOs={completedTODOs} 
     searchValue={searchValue} 
