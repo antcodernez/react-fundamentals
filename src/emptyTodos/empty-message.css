@@ -1,0 +1,8 @@
+.empty-message
+    {
+        text-align: center;
+        font-size: 40px;
+        margin-top: 120px;
+        color: white;
+        font-weight: bold;
+    }
