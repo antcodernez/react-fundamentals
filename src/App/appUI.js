@@ -6,33 +6,44 @@ import { TodoItem } from "../todoItem";
 import { TodosLoading } from "../todosLoading";
 import { TodosError} from "../todosError";
 import { EmptyTodos } from "../emptyTodos";
+import { TODOContext } from "../todoContext";
 
-function AppUI ({totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO,
-    loading, error}) 
+function AppUI () 
     {
     
         return (
             <>
-            <TodoCounter total={totalTODOs} completed={completedTODOs} />
+            <TodoCounter/>
+            <TodoSearch/>
+            <TODOContext.Consumer>
+                {({
+                    loading,
+                    error,
+                    searchedTODOs,
+                    completeTODO,
+                    deleteTODO
+                }) => (
+                    <TodoList>
+                    {loading && <TodosLoading/>}
 
-            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-            <TodoList>
-                {loading && <TodosLoading/>}
+                    {error && <TodosError/>}
+                    
+                    {(!loading && searchedTODOs.length === 0) && <EmptyTodos/>}
 
-                {error && <TodosError/>}
-                
-                {(!loading && searchedTODOs.length === 0) && <EmptyTodos/>}
-
-                {searchedTODOs.map((todo) => (
-                    <TodoItem
-                        key={todo.text}
-                        text={todo.text}
-                        completed={todo.completed}
-                        onComplete={() => completeTODO(todo.text)}
-                        onDelete={() => deleteTODO(todo.text)}
-                    />
-                    ))}
-            </TodoList>
+                    {searchedTODOs.map((todo) => (
+                        <TodoItem
+                            key={todo.text}
+                            text={todo.text}
+                            completed={todo.completed}
+                            onComplete={() => completeTODO(todo.text)}
+                            onDelete={() => deleteTODO(todo.text)}
+                        />
+                        ))}
+                </TodoList>
+                )}
+                {/* usando las render functions */}
+            </TODOContext.Consumer>
+           
             <CreateTodoButton />
             </>
         );
