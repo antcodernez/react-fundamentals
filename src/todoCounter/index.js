@@ -45,16 +45,21 @@
 
 import React from 'react';
 import './todoCounter.css';
+import {TODOContext} from "../todoContext/index";
 
-function TodoCounter({ total, completed }) {
+function TodoCounter() {
+  const {
+    totalTODOs, completedTODOs
+  } = React.useContext(TODOContext);
+
   let message = (
     <span>
-      Haz completado <strong>{completed}</strong> de <strong>{total}</strong> TODO's
+      Haz completado <strong>{completedTODOs}</strong> de <strong>{totalTODOs}</strong> TODO's
     </span>
   );
   let message1 = <span>Felicidades lo lograste 👻, terminaste todos los TODO's</span>;
 
-  return <h1>{ total === completed  ? message1 : message }</h1>;
+  return <h1>{ totalTODOs === completedTODOs  ? message1 : message }</h1>;
 }
 
 export { TodoCounter };

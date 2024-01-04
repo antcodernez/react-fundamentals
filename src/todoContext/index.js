@@ -27,7 +27,6 @@ function TODOProvider({children})
             // Normalizando texto sin tildes y a Lower Case
             const concidenciasTODOs = noTildes(element.text.toLowerCase());
             const searchValueLowerCase = noTildes(searchValue.toLowerCase());
-
             return concidenciasTODOs.includes(searchValueLowerCase);
         });
 
@@ -64,7 +63,6 @@ function TODOProvider({children})
 // Usando el hook useContext()
 // Usando el componente Consumer.
 
-// {/* <TODOContext.Provider></TODOContext.Provider>
-// <TODOContext.Consumer></TODOContext.Consumer> */}
+//  
 
 export { TODOContext, TODOProvider }

@@ -33,7 +33,7 @@ import { TODOProvider } from '../todoContext';
 function App() {
   return (          
     <TODOProvider>
-      asi el componente appUI va a tener acceso a toda la informacion que tenga en el contexto
+      {/* asi el componente appUI va a tener acceso a toda la informacion que tenga en el contexto */}
        <AppUI />
     </TODOProvider>
   );

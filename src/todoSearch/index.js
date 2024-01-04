@@ -1,10 +1,8 @@
 import React from "react";
 import "./todoSearch.css";
+import { TODOContext } from "../todoContext";
 
-function TodoSearch({
-  searchValue,
-  setSearchValue
-}) {
+function TodoSearch() {
     // const [searchValue, setSearchValue] = React.useState('');
     // useState(''); me permite definir un estado inicial en este caso es un string vacio pero puede ser lo que yo quiera
 
@@ -14,7 +12,10 @@ function TodoSearch({
     //Funcion actualizadora de estado
 
     //Necesito una funcion actualizadora del estado, controlada por react js para que se puedan hacer los procesos de inmutabilidad y no afecte el historial de estados de mi componente
-    
+    const {
+      searchValue,
+      setSearchValue
+    } = React.useContext(TODOContext)
     return ( 
       <input 
         placeholder="Search a task" 
