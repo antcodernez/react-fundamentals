@@ -1,3 +1,4 @@
+import React from "react";
 import { TodoCounter } from "../todoCounter";
 import { TodoSearch } from "../todoSearch";
 import { TodoList } from "../todoList";
@@ -7,10 +8,13 @@ import { TodosLoading } from "../todosLoading";
 import { TodosError} from "../todosError";
 import { EmptyTodos } from "../emptyTodos";
 import { TODOContext } from "../todoContext";
+import { Modal } from "../modal";
 
 function AppUI () 
     {
-    
+        const { 
+            openModal
+        } = React.useContext(TODOContext);
         return (
             <>
             <TodoCounter/>
@@ -45,6 +49,12 @@ function AppUI ()
             </TODOContext.Consumer>
            
             <CreateTodoButton />
+            {/* dentro del modal, van todos los componentes que quiero mover entre nodos de html */}
+            {openModal && (
+                <Modal>
+                    AGREGANDO TODOS perras
+                </Modal>
+            )}
             </>
         );
     };

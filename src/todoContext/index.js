@@ -9,10 +9,11 @@ function TODOProvider({children})
         const {item:todos, saveItem:saveTODOs, loading, error} = useLocalStorage("TODOS_V1", []);
         const [searchValue, setSearchValue] = React.useState('');
 
+        const [openModal, setOpenModal] = React.useState(false);
         const completedTODOs = todos.filter(
             todo => !!todo.completed
             // la doble negacion va a convertir a booleano cualquier cosa que me devuelca todo.completed
-
+ 
             // Si todo.completed tiene algo que de positivo(string, array, objeto lo que sea)
         ).length;
 
@@ -27,6 +28,7 @@ function TODOProvider({children})
             // Normalizando texto sin tildes y a Lower Case
             const concidenciasTODOs = noTildes(element.text.toLowerCase());
             const searchValueLowerCase = noTildes(searchValue.toLowerCase());
+
             return concidenciasTODOs.includes(searchValueLowerCase);
         });
 
@@ -48,7 +50,7 @@ function TODOProvider({children})
         return(
             <TODOContext.Provider value={{
                 totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO,
-                loading, error
+                loading, error, openModal, setOpenModal
             }}> 
                 {children}
             </TODOContext.Provider>
