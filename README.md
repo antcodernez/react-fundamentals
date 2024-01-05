@@ -1,5 +1,5 @@
 <h1 align="center">TODO  Machine</h1>
-![Ejemplo de imagen local](./public/UI.png)
+![Ejemplo de imagen local](`./public/UI.png`)
 
 This project was developed in React.js using : `create-react-app`, starting from the fundamentals, building up from the components. Subsequently, these components were styled using vanilla CSS, and dynamism was added to different components through states and their manipulation using custom hooks. It's worth noting that, for better development and to avoid the 'prop drilling' problem, functions like createContext() and createPortal() were used. The application also features browser cache storage, allowing users to save their tasks and retrieve them whenever needed.
 
