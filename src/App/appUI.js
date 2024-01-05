@@ -9,6 +9,7 @@ import { TodosError} from "../todosError";
 import { EmptyTodos } from "../emptyTodos";
 import { TODOContext } from "../todoContext";
 import { Modal } from "../modal";
+import { TodoForm } from "../todoForm";
 
 function AppUI () 
     {
@@ -52,7 +53,7 @@ function AppUI ()
             {/* dentro del modal, van todos los componentes que quiero mover entre nodos de html */}
             {openModal && (
                 <Modal>
-                    AGREGANDO TODOS perras
+                    <TodoForm />
                 </Modal>
             )}
             </>

@@ -14,7 +14,9 @@ function CreateTodoButton() {
         //     console.log(event.target)
 
         // }}>+</button>
-        <button  onClick={() => setOpenModal(!openModal)}>X</button>
+        <button  onClick={() => setOpenModal(!openModal)}
+            className="add-todo"
+        >X</button>
     );
 }
 
