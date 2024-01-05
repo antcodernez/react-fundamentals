@@ -31,7 +31,14 @@ function TODOProvider({children})
 
             return concidenciasTODOs.includes(searchValueLowerCase);
         });
-
+        const addTodo = (text) => {
+            const newTodos = [...todos];
+            newTodos.push({
+                text,
+                completed: false
+            })
+            saveTODOs(newTodos);
+        }
         //Vamos a crear la funcion actualizadora del estado
         const completeTODO = (text) => {
             const newTodos = [...todos];
@@ -49,7 +56,7 @@ function TODOProvider({children})
 
         return(
             <TODOContext.Provider value={{
-                totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO,
+                totalTODOs, completedTODOs, searchValue, setSearchValue, searchedTODOs, completeTODO, deleteTODO, addTodo,
                 loading, error, openModal, setOpenModal
             }}> 
                 {children}
