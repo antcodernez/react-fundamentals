@@ -54,10 +54,10 @@ function TodoCounter() {
 
   let message = (
     <span>
-      Haz completado <strong>{completedTODOs}</strong> de <strong>{totalTODOs}</strong> TODO's
+      You are completed <strong>{completedTODOs}</strong> to <strong>{totalTODOs}</strong> TODO's
     </span>
   );
-  let message1 = <span>Felicidades lo lograste 👻, terminaste todos los TODO's</span>;
+  let message1 = <span>Congratulations you did it!! 👻, you finished all the TODO's</span>;
 
   return <h1>{ totalTODOs === completedTODOs  ? message1 : message }</h1>;
 }
